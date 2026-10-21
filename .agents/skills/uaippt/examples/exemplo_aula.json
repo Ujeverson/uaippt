@@ -1,0 +1,30 @@
+{
+  "output": "exemplo_aula.pptx",
+  "slides": [
+    {"type": "cover", "title": "Introdução à Programação em Python", "subtitle": "Aula 1 — Variáveis e Tipos de Dados | Prof. Nome Sobrenome | 2026",
+     "notes": "Apresentar-se, combinar regras da turma e mostrar o plano da disciplina."},
+    {"type": "bullets", "title": "Objetivos da aula", "items": [
+      "Compreender o que é uma variável",
+      ["Nome, valor e tipo", 1],
+      ["Atribuição com o operador =", 1],
+      "Conhecer os tipos básicos do Python",
+      ["int, float, str e bool", 1],
+      "Ler e exibir dados com input() e print()"
+    ]},
+    {"type": "section", "title": "Variáveis", "subtitle": "Guardando informações na memória"},
+    {"type": "highlight", "title": "Conceito-chave", "statement": "Uma variável é um nome que aponta para um valor armazenado na memória.",
+     "items": ["O tipo é definido pelo valor, não pela declaração", "Nomes devem ser descritivos: idade, preco_total"]},
+    {"type": "code", "title": "Exemplo: declarando variáveis", "language": "python",
+     "code": "nome = \"Maria\"        # str\nidade = 19            # int\naltura = 1.68         # float\nmatriculada = True    # bool\n\nprint(f\"{nome} tem {idade} anos\")\nprint(type(altura))",
+     "caption": "Execute no Google Colab e observe a saída de type()."},
+    {"type": "table", "title": "Tipos primitivos do Python", "header": ["Tipo", "Exemplo", "Uso típico"],
+     "rows": [["int", "42", "Contagens, idades"], ["float", "3.14", "Medidas, valores monetários"], ["str", "\"SENAI\"", "Textos"], ["bool", "True / False", "Condições"]],
+     "col_widths": [1, 1.2, 2]},
+    {"type": "comparison", "title": "Boas e más práticas de nomes", "left_title": "Recomendado", "left": ["idade_aluno", "preco_total", "nome_completo"],
+     "right_title": "Evitar", "right": ["x, y, a1", "Idade Aluno (com espaço)", "2nome (começa com número)"]},
+    {"type": "two_columns", "title": "input() x print()", "left": ["input()", ["Lê texto digitado pelo usuário", 1], ["Sempre retorna str", 1]],
+     "right": ["print()", ["Exibe valores na tela", 1], ["Aceita vários argumentos", 1]]},
+    {"type": "image", "title": "Marca SENAI", "path": "../assets/logo_senai.png", "caption": "Exemplo de imagem ajustada à área de conteúdo"},
+    {"type": "closing", "title": "Obrigado!", "subtitle": "Dúvidas? professor@fieg.com.br"}
+  ]
+}

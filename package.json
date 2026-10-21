@@ -1,0 +1,49 @@
+{
+  "name": "uaippt",
+  "version": "1.0.0",
+  "description": "Gerador de apresentações PowerPoint (.pptx) no padrão oficial SENAI / Fatesg com Motion Design (Manim e Blender) e skill para AI Coding Agents.",
+  "main": "bin/uaippt.js",
+  "bin": {
+    "uaippt": "./bin/uaippt.js"
+  },
+  "scripts": {
+    "test": "node bin/uaippt.js --version",
+    "build-skill": "python -c \"import zipfile, pathlib; z = zipfile.ZipFile('uaippt.skill', 'w', zipfile.ZIP_DEFLATED); [z.write(f, 'uaippt/' + f.relative_to('.agents/skills/uaippt').as_posix()) for f in pathlib.Path('.agents/skills/uaippt').rglob('*') if f.is_file() and not any(p in f.parts for p in ['__pycache__', '.manim_cache', '.tmp_'])]; print('uaippt.skill packaged successfully!')\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ujeverson/uaippt.git"
+  },
+  "keywords": [
+    "uaippt",
+    "powerpoint",
+    "pptx",
+    "senai",
+    "fatesg",
+    "fieg",
+    "slides",
+    "apresentacao",
+    "motion-design",
+    "manim",
+    "blender",
+    "ai-agents",
+    "antigravity-skill",
+    "claude-code",
+    "cursor"
+  ],
+  "author": "Prof. Msc. Ujeverson Tavares <ujeverson@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ujeverson/uaippt/issues"
+  },
+  "homepage": "https://github.com/Ujeverson/uaippt#readme",
+  "files": [
+    "bin/",
+    ".agents/skills/uaippt/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

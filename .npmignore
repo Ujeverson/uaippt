@@ -1,0 +1,9 @@
+**/.manim_cache/**
+**/__pycache__/**
+**/*.pyc
+**/.tmp_*/**
+**/preview_*/**
+assets_prismas/
+*.pptx
+!assets/template.pptx
+!examples/exemplo_aula.pptx
