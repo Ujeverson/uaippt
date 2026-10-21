@@ -512,7 +512,7 @@ SenaiDeck = UaipptDeck
 
 
 # ---------------------------------------------------------------- CLI (roteiro JSON)
-def build_from_outline(outline: dict, output: str | Path | None = None) -> Path:
+def build_from_outline(outline: dict, output: str | Path | None = None, base_dir: str | Path | None = None) -> Path:
     prof = outline.get("professor")
     if not prof and sys.stdin and hasattr(sys.stdin, "isatty") and sys.stdin.isatty():
         try:
@@ -528,6 +528,14 @@ def build_from_outline(outline: dict, output: str | Path | None = None) -> Path:
     for spec in outline["slides"]:
         spec = dict(spec)
         kind = spec.pop("type")
+        # Resolve caminhos relativos de mídia em relação ao JSON se necessário
+        if "path" in spec and base_dir:
+            p = Path(spec["path"])
+            if not p.is_absolute() and not p.exists():
+                candidate = Path(base_dir) / p
+                if candidate.exists():
+                    spec["path"] = candidate
+
         method = getattr(deck, kind, None)
         if method is None or kind.startswith("_") or kind == "save":
             raise ValueError(f"tipo de slide desconhecido: {kind}")
@@ -538,5 +546,6 @@ def build_from_outline(outline: dict, output: str | Path | None = None) -> Path:
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         sys.exit(__doc__)
-    data = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-    print(build_from_outline(data, sys.argv[2] if len(sys.argv) > 2 else None))
+    json_path = Path(sys.argv[1]).resolve()
+    data = json.loads(json_path.read_text(encoding="utf-8"))
+    print(build_from_outline(data, sys.argv[2] if len(sys.argv) > 2 else None, base_dir=json_path.parent))
